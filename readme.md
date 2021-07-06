@@ -2,11 +2,11 @@
 
 ## What Needs to be Done
 
-- [] Add CSV Support
-- [] Translate the CSV into obstacles
-- [] Render obstacles
-- [] Collision Detection
-- [] Score-keeping system
+- [ ] Translate the CSV into obstacles
+- [ ] Render obstacles
+- [ ] Add CSV Support
+- [ ] Collision Detection
+- [ ] Score-keeping system
 
 ## How to Play
 
