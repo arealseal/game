@@ -1,8 +1,19 @@
-#Setting up Pygame
+
 import pygame
+import csv
+
+#Setting up Pygame
 pygame.init()
 win = pygame.display.set_mode((600,600))
 pygame.display.set_caption("Alex's Game")
+
+#Returns a set from the csv with the name entered
+def prepareCSV(filename):
+	b = []
+	with open(filename,newline="") as csvfile:
+		a = csv.reader(csvfile)
+		for row in a:
+			b.append(row)
 
 #attributes for cursor
 x = 200
