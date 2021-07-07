@@ -20,12 +20,11 @@ y = 590
 width = 200
 height = 10
 
+# configure controls
 def quit_check():
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			return True
-
-# configure controls
 def left_check(a):
 	return a[pygame.K_LEFT]
 def right_check(a):

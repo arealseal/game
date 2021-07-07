@@ -34,3 +34,16 @@ After that, each following line contains three numbers to indicate the status fo
 |2|Bad object that the player wants to avoid|
 |3|good "hold" object|
 |5|bad "hold" object|
+
+## How the Program Works
+
+1. The program sets up a Pygame window named `win` using pygame `method`s.
+2. The terminal will query the user for the name of the file they want to use as the game's data using `input()`.
+3. The program uses the library `csv` to parse the game data file into a `tuple` (representing the whole file) that contains more `tuple`s (representing each row) that contain each column.
+4. The program declares `int` variables that specify the dimensions of the player's character. Coordinates in Pygame are relative to the top-leftmost corner of the screen.
+5. The program defines functions that check for all the inputs that will be used to control the character. This is done so that it is easy to change the key layout.
+6. The actual game part of the program all takes place in a giant `while` loop. This is done so that the game will continue until it reaches a reason to stop.
+	- The program creates a `boolean` called `run` that will be checked to see if the game should continue.
+	- If the program finds a reason to stop (the main one being the close button on the window being clicked), it will make `run` false, causing the `while` loop to become false.
+7. The loop contains three distinct "parts:"
+	- 
