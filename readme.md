@@ -23,8 +23,9 @@ Select the corresponding lane and activate at the right time to hit a target and
 
 Levels are stored in a CSV document.
 The first line contains the number of "frames" in the level, then the amount of frames a minute. Here's an example with 500 frames at 120 frames a minute:
+*It also has a zero at the end, just ignore that part*
 
-`500,120`
+`500,120,0`
 
 After that, each following line contains three numbers to indicate the status for the three lanes.
 |Code|Description|
@@ -46,4 +47,15 @@ After that, each following line contains three numbers to indicate the status fo
 	- The program creates a `boolean` called `run` that will be checked to see if the game should continue.
 	- If the program finds a reason to stop (the main one being the close button on the window being clicked), it will make `run` false, causing the `while` loop to become false.
 7. The loop contains three distinct "parts:"
-	- 
+	- Checking to see what to do
+		- Where should the character be?
+		- What obstacles should be on the screen and where?
+	- Checking the rules
+		- Is there a collision between player and object?
+		- Has the file ended?
+		- Does the player die?
+	- Drawing on the screen
+		- First the background
+		- Then the obstacles and character
+		- `pygame.display.update()`
+8. After the loop, the game displays the outcome of the play-through of the level.
