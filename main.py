@@ -96,6 +96,7 @@ while run:
 	frameRemainder+=1
 	if frameRemainder == rowFrametime:
 		startRow+=1
+		frameRemainder=0
 
 	#Display objects
 	for rowPlus in range(rowsVisible): #number of rows visible given all rows are filled
