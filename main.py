@@ -50,13 +50,12 @@ print("Loading Game Data.")
 
 # Creation of variables related to the level
 rowCount=gameData[0][0] #Amount of rows in the level
-rowPace=gameData[0][1] #Amount of rows per minute
+rowSpeed=gameData[0][1] #Speed of row per frame in px
+rowDistance=gameData[0][2] #Distance between each row in px middle to middle
 startRow=1 #First row that hasn't come and gone yet
 workingRow = 0 #Row that is being calculated
-rowFrametime = framerate*60/rowPace #How many frames any one row will be on screen for
-rowSpeed = rowFrametime//600 #How many pixels a row moves in a frame
 frameRemainder = 0 #How many frames have passed since startRow has changed.
-rowsVisible = rowSpeed
+rowsVisible = 600 // (rowSpeed*rowDistance) #How many rows can be seen in the window at once
 
 #main game loop
 run = True
