@@ -12,7 +12,8 @@ def prepareCSV(filename):
 	with open(filename,newline="") as csvfile:
 		a = csv.reader(csvfile)
 		for row in a:
-			b.append(row)
+			b.append([int(x) for x in row])
+	return(b)
 
 #attributes for cursor
 x = 200
@@ -31,6 +32,14 @@ def right_check(a):
 	return a[pygame.K_RIGHT]
 def activate_check(a):
 	return a[pygame.K_SPACE]
+
+#Beginning of the user seeing Stuff™
+while True:
+	try:
+		prepareCSV(input("What is the name of the game data file?\n> "))
+		exit()
+	except:
+		print("INVALID FILE! Please try again.")
 
 #main game loop
 run = True

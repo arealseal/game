@@ -47,7 +47,7 @@ After that, each following line contains three numbers to indicate the status fo
 	- The program creates a `boolean` called `run` that will be checked to see if the game should continue.
 	- If the program finds a reason to stop (the main one being the close button on the window being clicked), it will make `run` false, causing the `while` loop to become false.
 7. The loop contains three distinct "parts:"
-	- Checking to see what to do
+	- Setting the scene
 		- Where should the character be?
 		- What obstacles should be on the screen and where?
 	- Checking the rules
