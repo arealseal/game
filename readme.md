@@ -2,7 +2,7 @@
 
 ## What Needs to be Done
 
-- [ ] Translate the CSV into obstacles
+- [X] Translate the CSV into obstacles
 - [ ] Render obstacles
 - [X] Add CSV Support
 - [ ] Collision Detection
