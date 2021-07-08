@@ -5,7 +5,7 @@ import csv
 pygame.init()
 win = pygame.display.set_mode((600,600))
 pygame.display.set_caption("Alex's Game")
-framerate=10 #how many times the main loop should run in a second
+framerate=60 #how many times the main loop should run in a second
 
 #Returns a set from the csv with the name entered
 def prepareCSV(filename):
@@ -41,7 +41,8 @@ def activate_check(a):
 validInput = False
 while not validInput:
 	try:
-		gameData = prepareCSV(input("What is the name of the game data file?\n> "))
+		#gameData = prepareCSV(input("What is the name of the game data file?\n> "))
+		gameData = prepareCSV("example.csv") #temp
 		validInput=True
 	except:
 		print("INVALID FILE! Please try again.")
@@ -50,13 +51,13 @@ print("Loading Game Data.")
 
 # Creation of variables related to the level
 rowCount=gameData[0][0] #Amount of rows in the level
-rowPace=gameData[0][1] #Amount of rows per minute
+rowSpeed=gameData[0][1] #Speed of row per frame in px
+rowDistance=gameData[0][2] #Distance between each row in px middle to middle
 startRow=1 #First row that hasn't come and gone yet
 workingRow = 0 #Row that is being calculated
-rowFrametime = framerate*60/rowPace #How many frames any one row will be on screen for
-rowSpeed = rowFrametime//600 #How many pixels a row moves in a frame
 frameRemainder = 0 #How many frames have passed since startRow has changed.
-rowsVisible = rowSpeed
+rowFrametime = rowDistance / rowSpeed #How many frames in between new rows appearing
+rowsVisible = 1 + (600 // rowDistance) #How many rows can be seen in the window at once
 
 #main game loop
 run = True
@@ -91,19 +92,22 @@ while run:
 	else:
 		pygame.draw.rect(win,(200,250,250),(x,y,width,height))
 
-	#Should an obstacle be drawn?
+	#If there's been enough frames since introducing the last row, introduce the next and reset the counter.
 	frameRemainder+=1
 	if frameRemainder == rowFrametime:
 		startRow+=1
-	for rowPlus in range(startRow-1,rowPace-1): #number of rows visible given all rows are filled
+
+	#Display objects
+	for rowPlus in range(rowsVisible): #number of rows visible given all rows are filled
 		workingRow = startRow+rowPlus #the row in the list that is being looked at
-		for lane in range(1,3):
+		for lane in range(1,4):
 			#Don't try to render rows after the last one
 			if workingRow >= rowCount:
 				run = False
-				exit()
+				break
 			if gameData[workingRow][lane-1] == 1:
-				display_obstacle(lane,frameCounter*10)
+				display_obstacle(lane,frameRemainder*rowSpeed - rowPlus*rowDistance)
+				pygame.display.update() #TEMP
 	
 	#Update screen
 	pygame.display.update()
