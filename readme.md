@@ -22,7 +22,7 @@ Select the corresponding lane and activate at the right time to hit a target and
 ## How to Create a Level
 
 Levels are stored in a CSV document.
-The first line contains the number of "frames" in the level, then how many pixels an obstacle moves in a frame, then how far spaced out each row is. Here's an example with 500 frames, moving 10 pixels a frame, with each row spaced out 50 pixels.:
+The first line contains the number of "frames" in the level, then how many pixels an obstacle moves in a frame, then how far spaced out each row is. Here's an example with 500 frames, moving 10 pixels a frame, with each row spaced out 50 pixels:
 
 `500,10,50`
 
@@ -31,9 +31,6 @@ After that, each following line contains three numbers to indicate the status fo
 |---|---|
 |0|Blank|
 |1|Good object that the player wants to hit|
-|2|Bad object that the player wants to avoid|
-|3|good "hold" object|
-|5|bad "hold" object|
 
 ## How the Program Works
 
