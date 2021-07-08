@@ -34,12 +34,15 @@ def activate_check(a):
 	return a[pygame.K_SPACE]
 
 #Beginning of the user seeing Stuff™
-while True:
+validInput = False
+while not validInput:
 	try:
-		prepareCSV(input("What is the name of the game data file?\n> "))
-		exit()
+		gameData = prepareCSV(input("What is the name of the game data file?\n> "))
+		validInput=True
 	except:
 		print("INVALID FILE! Please try again.")
+		validInput=False
+print("Loading Game Data.")
 
 #main game loop
 run = True

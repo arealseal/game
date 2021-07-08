@@ -4,7 +4,7 @@
 
 - [ ] Translate the CSV into obstacles
 - [ ] Render obstacles
-- [ ] Add CSV Support
+- [X] Add CSV Support
 - [ ] Collision Detection
 - [ ] Score-keeping system
 
