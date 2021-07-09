@@ -28,7 +28,7 @@ But none of that's worked so IDK what to do.
 - Space to activate
 
 *You can change these in the main.py file under "# configure controls"*
-Select the corresponding lane and activate at the right time to hit a target and get points.
+Select the corresponding lane and activate at the right time to hit a target and get points. Your score will 
 
 ## How to Create a Level
 

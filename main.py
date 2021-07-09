@@ -41,8 +41,8 @@ def activate_check(a):
 validInput = False
 while not validInput:
 	try:
-		#gameData = prepareCSV(input("What is the name of the game data file?\n> "))
-		gameData = prepareCSV("example.csv") #temp
+		gameData = prepareCSV(input("What is the name of the game data file?\n> "))
+		#gameData = prepareCSV("example.csv") #temp
 		validInput=True
 	except:
 		print("INVALID FILE! Please try again.")
@@ -61,10 +61,11 @@ rowCrossTime=600/rowSpeed #How long it takes for a row to cross the entire windo
 startRow=1 #First row that hasn't come and gone yet
 workingRow = 0 #Row that is being calculated
 frameRemainder = 0 #How many frames have passed since startRow has changed.
+score = 0 # How many 
+frameCounter = 0 # How many frames have passed since the program started
 
 #main game loop
 run = True
-frameCounter = 0
 while run:
 	#makeshift clock in ms
 	pygame.time.delay(1000//framerate)
@@ -91,9 +92,9 @@ while run:
 
 	#Draw character
 	if not keys[pygame.K_SPACE]:
-		pygame.draw.rect(win,(200,200,200),(x,y,width,height))
+		pygame.draw.rect(win,(0,120,120),(x,y,width,height))
 	else:
-		pygame.draw.rect(win,(200,250,250),(x,y,width,height))
+		pygame.draw.rect(win,(220,255,255),(x,y,width,height))
 
 	#If there's been enough frames since introducing the last row, introduce the next and reset the counter.
 	frameRemainder+=1
@@ -104,18 +105,23 @@ while run:
 	#Display objects
 	for rowPlus in range(rowsVisible): #number of rows visible given all rows are filled
 		workingRow = startRow+rowPlus #the row in the list that is being looked at
+		yCalc = (frameCounter*rowSpeed)-(workingRow*rowFrametime*rowSpeed) # How far down any obstacles in the row should be
 		for lane in range(1,4):
 			#Don't try to render rows after the last one
 			if workingRow >= rowCount:
 				run = False
 				break
-			if gameData[workingRow][lane-1] == 1:
-				#display_obstacle(lane,frameRemainder*rowSpeed - rowPlus*rowDistance)
-				display_obstacle(lane,frameRemainder*rowSpeed - rowPlus*rowDistance)
+			if gameData[workingRow][lane-1] == 1:# How far up or down should the obstacle be?
+				display_obstacle(lane,yCalc) # Actually displaying it
+				# If space is pressed, the character is in the correct lane, and there's an obstacle close enough, register a hit and destroy the obstacle
+				if keys[pygame.K_SPACE] and x/200 == lane-1 and yCalc <= 20 and yCalc >= -10:
+					score += 1
+					gameData[workingRow][lane-1]==0
 	
 	#Update screen
-	print(frameCounter)
+	#print(frameCounter)
 	pygame.display.update()
 
-#input("Press Enter to quit")
+print("Your score is:",score)
+input("Press Enter to quit")
 pygame.quit
