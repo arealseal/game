@@ -2,11 +2,22 @@
 
 ## What Needs to be Done
 
+- [X] Add CSV Support
 - [X] Translate the CSV into obstacles
 - [ ] Render obstacles
-- [X] Add CSV Support
 - [ ] Collision Detection
 - [ ] Score-keeping system
+
+## What I'm Currently Stuck On
+
+Right now, I'm stuck on finding the right thing to plug in for `y` on line 114.
+I've tried:
+
+- rendering everything at once;
+- using three-dimensional lists to store y-positions for each obstacle; and
+- a bunch of other stuff.
+
+But none of that's worked so IDK what to do.
 
 ## How to Play
 
