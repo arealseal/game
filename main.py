@@ -16,8 +16,8 @@ def prepareCSV(filename):
 			b.append([int(x) for x in row])
 	return(b)
 
-def display_obstacle(alane,y):
-	pygame.draw.rect(win,(100,100,100),((200*alane)-200,y,200,10))
+def display_obstacle(a_lane,y):
+	pygame.draw.rect(win,(100,100,100),((200*a_lane)-200,y,200,10))
 
 #attributes for cursor
 x = 200
@@ -112,7 +112,6 @@ while run:
 			if gameData[workingRow][lane-1] == 1:
 				#display_obstacle(lane,frameRemainder*rowSpeed - rowPlus*rowDistance)
 				display_obstacle(lane,frameRemainder*rowSpeed - rowPlus*rowDistance)
-				pygame.display.update() #TEMP
 	
 	#Update screen
 	print(frameCounter)
