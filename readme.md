@@ -12,12 +12,14 @@
 
 ### Default Controls
 
+You can change these in the main.py file under "# configure controls"
+
 - Left arrow to go into the left lane
 - Right arrow to go into the right lane
 - Space to activate
 
-*You can change these in the main.py file under "# configure controls"*
-Select the corresponding lane and activate at the right time to hit a target and get points. Your score will 
+
+Select the corresponding lane and activate at the right time to hit a target and get points. Your score will be displayed at the end of the game.
 
 ## How to Create a Level
 
