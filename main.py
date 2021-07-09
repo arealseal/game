@@ -110,11 +110,13 @@ while run:
 				run = False
 				break
 			if gameData[workingRow][lane-1] == 1:
+				#display_obstacle(lane,frameRemainder*rowSpeed - rowPlus*rowDistance)
 				display_obstacle(lane,frameRemainder*rowSpeed - rowPlus*rowDistance)
 				pygame.display.update() #TEMP
 	
 	#Update screen
+	print(frameCounter)
 	pygame.display.update()
 
-input("Press Enter to quit")
+#input("Press Enter to quit")
 pygame.quit
