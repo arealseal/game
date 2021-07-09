@@ -16,8 +16,8 @@ def prepareCSV(filename):
 			b.append([int(x) for x in row])
 	return(b)
 
-def display_obstacle(lane,y):
-	pygame.draw.rect(win,(100,100,100),((200*lane)-200,y,200,10))
+def display_obstacle(alane,y):
+	pygame.draw.rect(win,(100,100,100),((200*alane)-200,y,200,10))
 
 #attributes for cursor
 x = 200
@@ -49,15 +49,18 @@ while not validInput:
 		validInput=False
 print("Loading Game Data.")
 
-# Creation of variables related to the level
+# calculated variables, would-be constants
 rowCount=gameData[0][0] #Amount of rows in the level
 rowSpeed=gameData[0][1] #Speed of row per frame in px
 rowDistance=gameData[0][2] #Distance between each row in px middle to middle
+rowFrametime = rowDistance / rowSpeed #How many frames in between new rows appearing
+rowsVisible = 1 + (600 // rowDistance) #How many rows can be seen in the window at once
+rowCrossTime=600/rowSpeed #How long it takes for a row to cross the entire window
+
+#variables that change, aka variables
 startRow=1 #First row that hasn't come and gone yet
 workingRow = 0 #Row that is being calculated
 frameRemainder = 0 #How many frames have passed since startRow has changed.
-rowFrametime = rowDistance / rowSpeed #How many frames in between new rows appearing
-rowsVisible = 1 + (600 // rowDistance) #How many rows can be seen in the window at once
 
 #main game loop
 run = True
@@ -94,7 +97,7 @@ while run:
 
 	#If there's been enough frames since introducing the last row, introduce the next and reset the counter.
 	frameRemainder+=1
-	if frameRemainder == rowFrametime:
+	if frameRemainder == rowCrossTime:
 		startRow+=1
 		frameRemainder=0
 
@@ -113,4 +116,5 @@ while run:
 	#Update screen
 	pygame.display.update()
 
+input("Press Enter to quit")
 pygame.quit
